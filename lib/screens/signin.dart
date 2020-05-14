@@ -15,12 +15,8 @@ class _SignInState extends State<SignIn> {
       ),
       body: Container(
         decoration: BoxDecoration(
-          gradient: RadialGradient(
-            colors: <Color>[Colors.white, Colors.yellow.shade800],
-            center: Alignment(0, -0.3),
-            radius: 1.5,
+            color: Colors.orange[50]
           ),
-        ),
         child: Center(
           child: SingleChildScrollView(
             child: Column(
@@ -46,7 +42,8 @@ class _SignInState extends State<SignIn> {
   Widget loginButton() => Container(
         width: 180.0,
         child: RaisedButton(
-          color: MyStyle().darkColor,
+          //color: MyStyle().darkColor,
+          color: Colors.orange[800],
           onPressed: () {},
           child: Text(
             'Login',
@@ -63,9 +60,9 @@ class _SignInState extends State<SignIn> {
             labelStyle: TextStyle(color: MyStyle().darkColor),
             labelText: 'USERNAME :',
             enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: MyStyle().darkColor)),
-            focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide(color: MyStyle().primaryColor)),
+            focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.orange[200])),
           ),
         ),
       );

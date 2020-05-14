@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class MyStyle {
 
-  Color darkColor = Colors.red.shade500;
-  Color primaryColor = Colors.blue.shade500;
+  Color darkColor = Colors.orange[800];
+  Color primaryColor = Colors.orange[700];
+  Color secondColor = Colors.red[400];
 
   SizedBox mySizebox() => SizedBox(width: 8.0, height: 16.0,);
 

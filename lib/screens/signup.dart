@@ -15,7 +15,6 @@ class _SignUpState extends State<SignUp> {
       appBar: AppBar(
         title: Text('Sign Up'),
       ),
-      
       body: Container(
         decoration: BoxDecoration(
             color: Colors.orange[50],
@@ -42,13 +41,13 @@ class _SignUpState extends State<SignUp> {
 
   
   Widget registerButton() => Container(
-      padding: EdgeInsets.only(left: 50.0,right: 50.0),
+      padding: EdgeInsets.only(top: 10.0, left: 50.0,right: 50.0, bottom: 10.0),
         child: RaisedButton(
-          color: Colors.orange[800],
+          color: Colors.orange[500],
           onPressed: () {},
           child: Text(
             'Register',
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(color: Colors.white, fontSize: 20.0),
           ),
         ),
       );
@@ -72,7 +71,7 @@ class _SignUpState extends State<SignUp> {
                 ),
                 Text(
                   'ผู้สั่งอาหาร',
-                  style: TextStyle(color: MyStyle().darkColor),
+                  style: TextStyle(color: MyStyle().secondColor, fontWeight: FontWeight.bold),
                 )
               ],
             ),
@@ -98,7 +97,7 @@ class _SignUpState extends State<SignUp> {
                 ),
                 Text(
                   'เจ้าของร้านอาหาร',
-                  style: TextStyle(color: MyStyle().darkColor),
+                  style: TextStyle(color: MyStyle().secondColor, fontWeight: FontWeight.bold),
                 )
               ],
             ),
@@ -106,7 +105,7 @@ class _SignUpState extends State<SignUp> {
         ],
       );
 
-        Widget riderRadio() => Row(
+  Widget riderRadio() => Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Container(
@@ -124,7 +123,7 @@ class _SignUpState extends State<SignUp> {
                 ),
                 Text(
                   'ผู้ส่งอาหาร',
-                  style: TextStyle(color: MyStyle().darkColor),
+                  style: TextStyle(color: MyStyle().secondColor, fontWeight: FontWeight.bold),
                 )
               ],
             ),
@@ -139,11 +138,11 @@ class _SignUpState extends State<SignUp> {
             width: 250.0,
             child: TextField(
               decoration: InputDecoration(
-                prefixIcon: Icon(Icons.face, color: Colors.orange[700]),
-                labelStyle: TextStyle(color: Colors.orange[700]),
+                prefixIcon: Icon(Icons.face, color: MyStyle().primaryColor),
+                labelStyle: TextStyle(color: MyStyle().primaryColor),
                 labelText: 'NAME :',
                 enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.orange[700])),
+                    borderSide: BorderSide(color: MyStyle().primaryColor)),
                 focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.orange[200])),
               ),
@@ -159,11 +158,11 @@ class _SignUpState extends State<SignUp> {
             width: 250.0,
             child: TextField(
               decoration: InputDecoration(
-                prefixIcon: Icon(Icons.account_box, color: Colors.orange[700]),
-                labelStyle: TextStyle(color: Colors.orange[700]),
+                prefixIcon: Icon(Icons.account_box, color: MyStyle().primaryColor),
+                labelStyle: TextStyle(color: MyStyle().darkColor),
                 labelText: 'USERNAME :',
                 enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.orange[700])),
+                    borderSide: BorderSide(color: MyStyle().primaryColor)),
                 focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.orange[200])),
               ),
@@ -179,11 +178,11 @@ class _SignUpState extends State<SignUp> {
             width: 250.0,
             child: TextField(
               decoration: InputDecoration(
-                prefixIcon: Icon(Icons.lock, color: Colors.orange[700]),
-                labelStyle: TextStyle(color: Colors.orange[700]),
+                prefixIcon: Icon(Icons.lock, color: MyStyle().primaryColor),
+                labelStyle: TextStyle(color: MyStyle().primaryColor),
                 labelText: 'PASSWORD :',
                 enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.orange[700])),
+                    borderSide: BorderSide(color: MyStyle().primaryColor)),
                 focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.orange[200])),
               ),
