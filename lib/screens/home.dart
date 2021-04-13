@@ -1,7 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:drider/screens/signIn.dart';
 import 'package:drider/screens/signup.dart';
 import 'package:drider/utility/my_style.dart';
-import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -18,18 +18,20 @@ class _HomeState extends State<Home> {
       // ),
       drawer: showDrawer(),
       body: Container(
-        decoration: BoxDecoration(color: Colors.orange[50]),
+        decoration: BoxDecoration(
+          color: Colors.red.shade500,
+          image: DecorationImage(
+            image: AssetImage("images/bg_red.jpg"),
+            fit: BoxFit.cover,
+          ),
+        ),
         child: Center(
           child: Column(
             children: <Widget>[
-              //MyStyle().showHeader(),
               Column(
-                // mainAxisSize: MainAxisSize.min,
                 children: [
                   MyStyle().mySizebox(),
-                  MyStyle().showLogo(),
-                  MyStyle().showTitle3('Drider'),
-                  //MyStyle().myColorSizebox(),
+                  MyStyle().myColorSizebox(),
                 ],
               ),
             ],

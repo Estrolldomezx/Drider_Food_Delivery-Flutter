@@ -11,6 +11,10 @@ class MyStyle {
         width: 8.0,
         height: 56.0,
       );
+  
+    SizedBox mySizebox2() => SizedBox(
+        height: 36.0,
+      );
 
   Text showTitle(String title) => Text(
         title,
@@ -24,8 +28,8 @@ class MyStyle {
   Text showTitle2(String title) => Text(
         title,
         style: TextStyle(
-          fontSize: 18.0,
-          color: Colors.red.shade500,
+          fontSize: 22.0,
+          color: Colors.grey[800],
           fontWeight: FontWeight.bold,
         ),
       );
@@ -41,8 +45,16 @@ class MyStyle {
 
   Container showLogo() {
     return Container(
-      width: 180.0,
+      width: 160.0,
+      height: 150.0,
       child: Image.asset('images/logo1_fire.png'),
+    );
+  }
+
+  Container showBackground() {
+    return Container(
+      // width: 160.0,
+      child: Image.asset('images/bg_red.jpg'),
     );
   }
 
@@ -54,22 +66,54 @@ class MyStyle {
   }
 
   SizedBox myColorSizebox() => SizedBox(
-        width: 380.0,
-        height: 258.0,
-        child: Container(
-          decoration: BoxDecoration(
-            color: Colors.orange[500],
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20), topRight: Radius.circular(20)),
-          ),
-          child: Column(
-            children: <Widget>[
-              mySizebox(),
-              showLogo(),
-            ],
+        width: 160.0,
+        height: 200.0,
+        child: Center(
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.red[100],
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(40),
+                topRight: Radius.circular(40),
+                bottomLeft: Radius.circular(40),
+                bottomRight: Radius.circular(40),
+              ),
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                showLogo(),
+              ],
+            ),
           ),
         ),
       );
 
   MyStyle();
 }
+
+
+class MyIcon {
+    Container showBurger() {
+    return Container(
+      width: 200.0,
+      // height: 150.0,
+      child: Image.asset('images/burger.png'),
+    );
+  }
+  MyIcon();
+}
+
+final kTitleStyle = TextStyle(
+  color: Colors.grey[800],
+  // fontFamily: 'CM Sans Serif',
+  fontSize: 26.0,
+  height: 1.5,
+  fontWeight: FontWeight.bold,
+);
+
+final kSubtitleStyle = TextStyle(
+  color: Colors.grey[600],
+  fontSize: 18.0,
+  height: 1.2,
+);
