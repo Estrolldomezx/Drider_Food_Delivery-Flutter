@@ -8,6 +8,8 @@ import 'package:drider/screens/main_user.dart';
 import 'package:drider/utility/my_style.dart';
 import 'package:drider/utility/normal_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 
 class SignIn extends StatefulWidget {
   @override
@@ -23,6 +25,7 @@ class _SignInState extends State<SignIn> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Sign In'),
+        backgroundColor: Colors.orange[800],
       ),
       body: Container(
         decoration: BoxDecoration(color: Colors.orange[50]),
