@@ -7,6 +7,11 @@ class MyStyle {
 
   var color;
 
+  SizedBox mySizeboxORG() => SizedBox(
+        width: 8.0,
+        height: 16.0,
+      );
+
   SizedBox mySizebox() => SizedBox(
         width: 8.0,
         height: 56.0,
@@ -48,6 +53,14 @@ class MyStyle {
       width: 260.0,
       // height: 150.0,
       child: Image.asset('images/food_logo.png'),
+    );
+  }
+
+  Container showRiderLogo() {
+    return Container(
+      width: 200.0,
+      // height: 150.0,
+      child: Image.asset('images/logo1_fire.png'),
     );
   }
 

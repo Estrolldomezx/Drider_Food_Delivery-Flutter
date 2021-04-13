@@ -26,15 +26,15 @@ class _SignUpState extends State<SignUp> {
             padding: EdgeInsets.only(top: 20.0),
             children: <Widget>[
               myLogo(),
-              MyStyle().mySizebox(),
+              MyStyle().mySizeboxORG(),
               showAppName(),
-              MyStyle().mySizebox(),
+              MyStyle().mySizeboxORG(),
               nameForm(),
-              MyStyle().mySizebox(),
+              MyStyle().mySizeboxORG(),
               userForm(),
-              MyStyle().mySizebox(),
+              MyStyle().mySizeboxORG(),
               passwordForm(),
-              MyStyle().mySizebox(),
+              MyStyle().mySizeboxORG(),
               userRadio(),
               shopRadio(),
               riderRadio(),
@@ -262,7 +262,7 @@ class _SignUpState extends State<SignUp> {
   Widget myLogo() => Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          MyStyle().showLogo(),
+          MyStyle().showRiderLogo(),
         ],
       );
 }

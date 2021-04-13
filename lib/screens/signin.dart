@@ -34,14 +34,14 @@ class _SignInState extends State<SignIn> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                MyStyle().showLogo(),
-                MyStyle().mySizebox(),
+                MyStyle().showRiderLogo(),
+                MyStyle().mySizeboxORG(),
                 MyStyle().showTitle('Drider Food & Delivery'),
-                MyStyle().mySizebox(),
+                MyStyle().mySizeboxORG(),
                 userForm(),
-                MyStyle().mySizebox(),
+                MyStyle().mySizeboxORG(),
                 passwordForm(),
-                MyStyle().mySizebox(),
+                MyStyle().mySizeboxORG(),
                 loginButton()
               ],
             ),
