@@ -1,3 +1,4 @@
+import 'package:drider/screens/home.dart';
 import 'package:drider/utility/my_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -22,13 +23,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   Widget _indicator(bool isActive) {
     return AnimatedContainer(
-      duration: Duration(milliseconds: 150),
-      margin: EdgeInsets.symmetric(horizontal: 8.0),
-      height: 8.0,
-      width: isActive ? 24.0 : 16.0,
+      duration: Duration(milliseconds: 50),
+      margin: EdgeInsets.symmetric(horizontal: 5.0),
+      height: 10.0,
+      width: 10.0,
       decoration: BoxDecoration(
-        color: isActive ? Colors.orange[200] : Colors.orange[700],
-        borderRadius: BorderRadius.all(Radius.circular(50)),
+        color: isActive ? Colors.orange[700] : Colors.white,
+        borderRadius: BorderRadius.all(Radius.circular(10)),
       ),
     );
   }
@@ -43,14 +44,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              stops: [0.1, 0.4, 0.7, 0.9],
+              stops: [0.1, 0.7],
               colors: [
                 Colors.orange[50],
                 Colors.orange[100],
-                Colors.orange[200],
-                Colors.orange[300],
+                // Colors.orange[200],
+                // Colors.orange[300],
               ],
-            
             ),
           ),
           child: Padding(
@@ -72,7 +72,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   ),
                 ),
                 Container(
-                  height: 400.0,
+                  height: 360.0,
                   child: PageView(
                     physics: ClampingScrollPhysics(),
                     controller: _pageController,
@@ -83,20 +83,19 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     },
                     children: <Widget>[
                       Padding(
-                        padding: EdgeInsets.all(40.0),
+                        padding: EdgeInsets.all(10.0),
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
                             Center(
                               child: Image(
                                 image: AssetImage(
-                                  'images/burger.png',
+                                  'images/burger2.png',
                                 ),
-                                height: 200.0,
-                                width: 200.0,
+                                width: 250.0,
                               ),
                             ),
-                            SizedBox(height: 10.0),
+                            SizedBox(height: 25.0),
                             Center(
                               child: Text(
                                 'Food You Love',
@@ -110,18 +109,18 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       Padding(
                         padding: EdgeInsets.all(40.0),
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
                             Center(
                               child: Image(
                                 image: AssetImage(
-                                  'images/logo1.png',
+                                  'images/new_logo1.png',
                                 ),
                                 // height: 290.0,
-                                width: 500.0,
+                                width: 300.0,
                               ),
                             ),
-                            // SizedBox(height: 10.0),
+                            SizedBox(height: 10.0),
                             Center(
                               child: Text(
                                 'Delivered To You',
@@ -135,15 +134,18 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       Padding(
                         padding: EdgeInsets.all(40.0),
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
+                            SizedBox(
+                              height: 15.0,
+                            ),
                             Center(
                               child: Image(
                                 image: AssetImage(
-                                  'images/party1.png',
+                                  'images/new_party1.png',
                                 ),
                                 //height: 280.0,
-                                width: 350.0,
+                                width: 400.0,
                               ),
                             ),
                             SizedBox(height: 20.0),
@@ -168,45 +170,56 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     ? Expanded(
                         child: Align(
                           alignment: FractionalOffset.bottomRight,
+                          // ignore: deprecated_member_use
                           child: FlatButton(
                             onPressed: () {
                               _pageController.nextPage(
-                                duration: Duration(milliseconds: 500),
+                                duration: Duration(milliseconds: 50),
                                 curve: Curves.ease,
                               );
                             },
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              mainAxisSize: MainAxisSize.min,
-                              children: <Widget>[
-                                // TextButton(
-                                //   'Next',
-                                //   style: TextStyle(
-                                //     color: Colors.orange[500],
-                                //     fontSize: 22.0,
-                                //   ),
-                                // ),
-                                //
-                                TextButton(
-                                    child: Text('Next',
-                                        style: TextStyle(fontSize: 14)),
-                                    style: ButtonStyle(
-                                        foregroundColor:
-                                            MaterialStateProperty.all<Color>(
-                                                Colors.white),
-                                        backgroundColor:
-                                            MaterialStateProperty.all<Color>(
-                                                Colors.red),
-                                        shape: MaterialStateProperty.all<
-                                                RoundedRectangleBorder>(
-                                            RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(18.0),
-                                                side: BorderSide(
-                                                    color: Colors.red)))),
-                                    onPressed: () => null),
-                                SizedBox(width: 10.0),
-                              ],
+                            child: Center(
+                              child: Row(
+                                // mainAxisAlignment: MainAxisAlignment.end,
+                                mainAxisSize: MainAxisSize.min,
+                                children: <Widget>[
+                                  // TextButton(
+                                  //   'Next',
+                                  //   style: TextStyle(
+                                  //     color: Colors.orange[500],
+                                  //     fontSize: 22.0,
+                                  //   ),
+                                  // ),
+                                  //
+
+                                  Container(
+                                    width: 300.0,
+                                    child: TextButton(
+                                        child: Text(
+                                          'Next',
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                          ),
+                                        ),
+                                        style: ButtonStyle(
+                                            foregroundColor:
+                                                MaterialStateProperty.all<Color>(
+                                                    Colors.white),
+                                            backgroundColor:
+                                                MaterialStateProperty.all<Color>(
+                                                    Colors.orange[700]),
+                                            shape: MaterialStateProperty.all<
+                                                    RoundedRectangleBorder>(
+                                                RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            25.0),
+                                                    side: BorderSide(color: Colors.orange[700])))),
+                                        onPressed: () => null),
+                                  ),
+                                  SizedBox(width: 10.0),
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -223,7 +236,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               width: double.infinity,
               color: Colors.orange[700],
               child: GestureDetector(
-                onTap: () => print('Get started'),
+                onTap: () {
+                  Navigator.pop(context);
+                  MaterialPageRoute route =
+                      MaterialPageRoute(builder: (value) => Home());
+                  Navigator.push(context, route);
+                },
                 child: Center(
                   child: Padding(
                     padding: EdgeInsets.only(bottom: 10.0),

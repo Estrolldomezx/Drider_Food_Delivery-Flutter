@@ -28,8 +28,8 @@ class MyStyle {
   Text showTitle2(String title) => Text(
         title,
         style: TextStyle(
-          fontSize: 22.0,
-          color: Colors.grey[800],
+          fontSize: 24.0,
+          color: Colors.orange[50],
           fontWeight: FontWeight.bold,
         ),
       );
@@ -45,9 +45,9 @@ class MyStyle {
 
   Container showLogo() {
     return Container(
-      width: 160.0,
-      height: 150.0,
-      child: Image.asset('images/logo1_fire.png'),
+      width: 260.0,
+      // height: 150.0,
+      child: Image.asset('images/food_logo.png'),
     );
   }
 
@@ -66,8 +66,8 @@ class MyStyle {
   }
 
   SizedBox myColorSizebox() => SizedBox(
-        width: 160.0,
-        height: 200.0,
+        width: 260.0,
+        // height: 260.0,
         child: Center(
           child: Container(
             decoration: BoxDecoration(

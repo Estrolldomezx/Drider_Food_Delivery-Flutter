@@ -12,29 +12,33 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   backgroundColor: Colors.orange[800],
-      //   title: Text('Drider Food & Delivery'),
-      // ),
+      appBar: AppBar(
+        backgroundColor: Colors.orange[800],
+        title: Text('Drider Food & Delivery'),
+      ),
       drawer: showDrawer(),
-      body: Container(
-        decoration: BoxDecoration(
-          color: Colors.red.shade500,
-          image: DecorationImage(
-            image: AssetImage("images/bg_red.jpg"),
-            fit: BoxFit.cover,
+      body: Center(
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.red.shade500,
+            image: DecorationImage(
+              image: AssetImage("images/bg_red.jpg"),
+              fit: BoxFit.cover,
+            ),
           ),
-        ),
-        child: Center(
-          child: Column(
-            children: <Widget>[
-              Column(
-                children: [
-                  MyStyle().mySizebox(),
-                  MyStyle().myColorSizebox(),
-                ],
-              ),
-            ],
+          child: Center(
+            child: Column(
+              children: <Widget>[
+                Column(
+                  children: [
+                    MyStyle().mySizebox(),
+                    MyStyle().myColorSizebox(),
+                    MyStyle().mySizebox(),
+                    MyStyle().showTitle2('Drider Food & Delivery'),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -43,14 +47,22 @@ class _HomeState extends State<Home> {
 
   Drawer showDrawer() => Drawer(
         child: ListView(
-          children: <Widget>[showHeadDrawer(), signInMenu(), signUpMenu()],
+          children: <Widget>[
+            showHeadDrawer(),
+            signInMenu(),
+            SizedBox(
+              height: 10.0,
+            ),
+            signUpMenu()
+          ],
         ),
       );
 
   ListTile signInMenu() {
     return ListTile(
-      leading: Icon(Icons.android),
+      leading: Icon(Icons.login_outlined),
       title: Text('Sign In'),
+      tileColor: Colors.orange[100],
       onTap: () {
         Navigator.pop(context);
         MaterialPageRoute route =
@@ -62,8 +74,9 @@ class _HomeState extends State<Home> {
 
   ListTile signUpMenu() {
     return ListTile(
-      leading: Icon(Icons.android),
+      leading: Icon(Icons.logout),
       title: Text('Sign Up'),
+      tileColor: Colors.orange[100],
       onTap: () {
         Navigator.pop(context);
         MaterialPageRoute route =
@@ -75,6 +88,15 @@ class _HomeState extends State<Home> {
 
   UserAccountsDrawerHeader showHeadDrawer() {
     return UserAccountsDrawerHeader(
-        accountName: Text('Guest'), accountEmail: Text('Please login'));
+      decoration: BoxDecoration(
+        color: Colors.orange[600],
+        image: DecorationImage(
+              image: AssetImage("images/header.png"),
+              fit: BoxFit.cover,
+            ),
+      ),
+      accountName: Text('Guest'),
+      accountEmail: Text('Please login'),
+    );
   }
 }
