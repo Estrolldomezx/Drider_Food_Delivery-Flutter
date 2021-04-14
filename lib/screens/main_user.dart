@@ -1,4 +1,6 @@
+import 'package:drider/utility/signoutProcess.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MainUser extends StatefulWidget {
   @override
@@ -6,11 +8,31 @@ class MainUser extends StatefulWidget {
 }
 
 class _MainUserState extends State<MainUser> {
+  String nameUser;
+
+  @override
+  void initState() {
+    //ทำการก่อน build state
+    super.initState();
+    findUser();
+  }
+
+  Future<Null> findUser() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    setState(() {
+      nameUser = preferences.getString('Name');
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Main User'),
+        title: Text(nameUser == null ? 'Main User' : '$nameUser login'),
+        actions: <Widget>[
+          IconButton(
+              icon: Icon(Icons.exit_to_app), onPressed: () => signOutProcess())
+        ],
       ),
     );
   }

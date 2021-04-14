@@ -1,7 +1,12 @@
 import 'package:drider/screens/home.dart';
+import 'package:drider/screens/main_rider.dart';
+import 'package:drider/screens/main_shop.dart';
+import 'package:drider/screens/main_user.dart';
 import 'package:drider/utility/my_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:drider/utility/normal_dialog.dart';
 
 class OnboardingScreen extends StatefulWidget {
   @override
@@ -9,6 +14,37 @@ class OnboardingScreen extends StatefulWidget {
 }
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
+  @override
+  void initState() {
+    super.initState();
+    checkPreference();
+  }
+
+  Future<Null> checkPreference() async {
+    try {
+      SharedPreferences preferences = await SharedPreferences.getInstance();
+      String chooseType = preferences.getString('ChooseType');
+      if (chooseType != null && chooseType.isNotEmpty) {
+        if (chooseType == 'User') {
+          routeToService(MainUser());
+        } else if (chooseType == 'Shop') {
+          routeToService(MainShop());
+        } else if (chooseType == 'Rider') {
+          routeToService(MainRider());
+        } else {
+          normalDialog(context, 'Error User Type');
+        }
+      }
+    } catch (e) {}
+  }
+
+  void routeToService(Widget myWidget) {
+    MaterialPageRoute route = MaterialPageRoute(
+      builder: (context) => myWidget,
+    );
+    Navigator.pushAndRemoveUntil(context, route, (route) => false);
+  }
+
   final int _numPages = 3;
   final PageController _pageController = PageController(initialPage: 0);
   int _currentPage = 0;

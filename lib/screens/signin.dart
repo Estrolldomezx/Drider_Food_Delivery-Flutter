@@ -10,7 +10,6 @@ import 'package:drider/utility/normal_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-
 class SignIn extends StatefulWidget {
   @override
   _SignInState createState() => _SignInState();
@@ -61,7 +60,7 @@ class _SignInState extends State<SignIn> {
                 user.isEmpty ||
                 password == null ||
                 password.isEmpty) {
-              normalDoalog(context, 'Please try again');
+              normalDialog(context, 'Please try again');
             } else {
               checkAuthen();
             }
@@ -88,22 +87,29 @@ class _SignInState extends State<SignIn> {
         if (password == userModel.password) {
           String chooseType = userModel.chooseType;
           if (chooseType == 'User') {
-            routeToService(MainUser());
-          } else if (chooseType == 'Shop'){
-            routeToService(MainShop());
-          } else if(chooseType == 'Rider'){
-            routeToService(MainRider());
+            routeToService(MainUser(), userModel);
+          } else if (chooseType == 'Shop') {
+            routeToService(MainShop(), userModel);
+          } else if (chooseType == 'Rider') {
+            routeToService(MainRider(), userModel);
           } else {
-            normalDoalog(context, 'Error, Please Try again');
+            normalDialog(context, 'Error, Please Try again');
           }
         } else {
-          normalDoalog(context, 'Wrong password !');
+          normalDialog(context, 'Wrong password !');
         }
       }
     } catch (e) {}
   }
 
-  void routeToService(Widget myWidget) {
+  Future<Null> routeToService(Widget myWidget, UserModel userModel) async {
+    //หากทำเสร็จ จะรีเทิร์นเป็น null
+    //ส่งค่า userModel ไปยัง services หน้าต่างๆ
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    preferences.setString('id', userModel.id);
+    preferences.setString('ChooseType', userModel.chooseType);
+    preferences.setString('Name', userModel.name);
+
     MaterialPageRoute route = MaterialPageRoute(
       builder: (context) => myWidget,
     );

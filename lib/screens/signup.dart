@@ -59,9 +59,9 @@ class _SignUpState extends State<SignUp> {
                 password == null ||
                 password.isEmpty) {
               print('Have a space');
-              normalDoalog(context, 'กรุณากรอกข้อมูลให้ครบถ้วน');
+              normalDialog(context, 'กรุณากรอกข้อมูลให้ครบถ้วน');
             } else if (chooseType == null) {
-              normalDoalog(context, 'โปรดเลือกประเภทให้ถูกต้อง');
+              normalDialog(context, 'โปรดเลือกประเภทให้ถูกต้อง');
             } else {
               checkUser();
             }
@@ -80,7 +80,7 @@ class _SignUpState extends State<SignUp> {
           if (res.toString() == 'null') {
             registerThread();
           } else {
-            normalDoalog(context, '$user is already registered');
+            normalDialog(context, '$user is already registered');
           }
         });
       }
@@ -94,7 +94,7 @@ class _SignUpState extends State<SignUp> {
           if (res.toString() == 'true') { //echo true from php
             Navigator.pop(context);
           } else{
-            normalDoalog(context, 'Can not Sign up, Please try again');
+            normalDialog(context, 'Can not Sign up, Please try again');
           }
 
         });

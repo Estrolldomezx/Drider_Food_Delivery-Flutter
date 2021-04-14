@@ -1,3 +1,4 @@
+import 'package:drider/utility/signoutProcess.dart';
 import 'package:flutter/material.dart';
 
 class MainShop extends StatefulWidget {
@@ -11,6 +12,10 @@ class _MainShopState extends State<MainShop> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Main Shop'),
+        actions: <Widget>[
+          IconButton(
+              icon: Icon(Icons.exit_to_app), onPressed: () => signOutProcess())
+        ],
       ),
     );
   }

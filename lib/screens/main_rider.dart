@@ -1,3 +1,4 @@
+import 'package:drider/utility/signoutProcess.dart';
 import 'package:flutter/material.dart';
 
 class MainRider extends StatefulWidget {
@@ -11,6 +12,10 @@ class _MainRiderState extends State<MainRider> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Main Rider'),
+        actions: <Widget>[
+          IconButton(
+              icon: Icon(Icons.exit_to_app), onPressed: () => signOutProcess())
+        ],
       ),
     );
   }
