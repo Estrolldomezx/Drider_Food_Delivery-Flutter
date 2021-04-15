@@ -31,7 +31,7 @@ class _MainShopState extends State<MainShop> {
   }
 
   ListTile homeMenu(context) => ListTile(
-      leading: Icon(Icons.menu_book),
+      leading: Icon(Icons.menu_book, color: MyStyle().darkColor),
       title: Text('รายการอาหารที่ลูกค้าสั่ง'),
       subtitle: Text('รายการที่ยังไม่ได้ทำ'),
       onTap: () {
@@ -41,7 +41,7 @@ class _MainShopState extends State<MainShop> {
         Navigator.pop(context);
       });
   ListTile foodMenu(context) => ListTile(
-      leading: Icon(Icons.fastfood_rounded),
+      leading: Icon(Icons.fastfood_rounded, color: MyStyle().darkColor),
       title: Text('เมนูอาหาร'),
       onTap: () {
         setState(() {
@@ -51,7 +51,7 @@ class _MainShopState extends State<MainShop> {
       });
   
   ListTile informationMenu(context) => ListTile(
-      leading: Icon(Icons.info_outlined),
+      leading: Icon(Icons.info_outlined, color: MyStyle().darkColor),
       title: Text('รายละเอียดของร้าน'),
       onTap: () {
         setState(() {
@@ -60,7 +60,7 @@ class _MainShopState extends State<MainShop> {
         Navigator.pop(context);
       });
   ListTile signOutMenu(context) => ListTile(
-        leading: Icon(Icons.logout),
+        leading: Icon(Icons.logout, color: MyStyle().darkColor),
         title: Text('Sign Out'),
         onTap: () => signOutProcess(context),
       );
