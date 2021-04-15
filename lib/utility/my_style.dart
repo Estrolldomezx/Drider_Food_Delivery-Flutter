@@ -4,6 +4,7 @@ class MyStyle {
   Color darkColor = Colors.orange[800];
   Color primaryColor = Colors.orange[700];
   Color secondColor = Colors.red[400];
+  Color DrawerColor = Colors.red[600];
 
   var color;
 
@@ -48,6 +49,14 @@ class MyStyle {
         ),
       );
 
+   Container showIcon() {
+    return Container(
+      width: 60.0,
+      // height: 150.0,
+      child: Image.asset('images/new_logo1.png'),
+    );
+  }    
+
   Container showLogo() {
     return Container(
       width: 260.0,
@@ -84,7 +93,7 @@ class MyStyle {
         child: Center(
           child: Container(
             decoration: BoxDecoration(
-              color: Colors.red[100],
+              color: Colors.blue[50],
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(40),
                 topRight: Radius.circular(40),
@@ -101,6 +110,16 @@ class MyStyle {
           ),
         ),
       );
+
+      BoxDecoration myBoxDecoration(String namePic) {
+        return BoxDecoration(
+        color: Colors.orange[600],
+        image: DecorationImage(
+              image: AssetImage("images/$namePic"),
+              fit: BoxFit.cover,
+            ),
+      );
+      }
 
   MyStyle();
 }

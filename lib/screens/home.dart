@@ -13,17 +13,30 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.orange[800],
+        backgroundColor: Colors.orange[600],
         title: Text('Drider Food & Delivery'),
       ),
       drawer: showDrawer(),
       body: Center(
         child: Container(
+          // decoration: BoxDecoration(
+          //   color: Colors.red.shade500,
+          //   image: DecorationImage(
+          //     image: AssetImage("images/bg_red.jpg"),
+          //     fit: BoxFit.cover,
+          //   ),
+          // ),
           decoration: BoxDecoration(
-            color: Colors.red.shade500,
-            image: DecorationImage(
-              image: AssetImage("images/bg_red.jpg"),
-              fit: BoxFit.cover,
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              stops: [0.1, 0.4, 0.7, 0.9],
+              colors: [
+                Color(0xFF3594DD),
+                Color(0xFF4563DB),
+                Color(0xFF5036D5),
+                Color(0xFF5B16D0),
+              ],
             ),
           ),
           child: Center(
@@ -88,15 +101,11 @@ class _HomeState extends State<Home> {
 
   UserAccountsDrawerHeader showHeadDrawer() {
     return UserAccountsDrawerHeader(
-      decoration: BoxDecoration(
-        color: Colors.orange[600],
-        image: DecorationImage(
-              image: AssetImage("images/header.png"),
-              fit: BoxFit.cover,
-            ),
-      ),
+      // currentAccountPicture: MyStyle().showIcon(),
+      decoration: MyStyle().myBoxDecoration('header.png'),
       accountName: Text('Guest'),
       accountEmail: Text('Please login'),
     );
+    
   }
 }

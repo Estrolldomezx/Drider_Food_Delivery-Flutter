@@ -1,3 +1,4 @@
+import 'package:drider/utility/my_style.dart';
 import 'package:drider/utility/signoutProcess.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -31,9 +32,22 @@ class _MainUserState extends State<MainUser> {
         title: Text(nameUser == null ? 'Main User' : '$nameUser login'),
         actions: <Widget>[
           IconButton(
-              icon: Icon(Icons.exit_to_app), onPressed: () => signOutProcess())
+              icon: Icon(Icons.exit_to_app),
+              onPressed: () => signOutProcess(context))
         ],
       ),
+      drawer: showDrawer(),
     );
   }
+
+  Drawer showDrawer() => Drawer(
+          child: ListView(
+        children: <Widget>[
+          UserAccountsDrawerHeader(
+            accountName: Text('$nameUser'),
+            accountEmail:
+                (Text('Login', style: TextStyle(color: Colors.white))),
+          )
+        ],
+      ));
 }
