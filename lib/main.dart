@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(primarySwatch: Colors.orange),
+      theme: ThemeData(primarySwatch: Colors.orange,fontFamily: 'Sarabun'),
       title: 'Drider Food&Delivery',
       home: OnboardingScreen(),
     );

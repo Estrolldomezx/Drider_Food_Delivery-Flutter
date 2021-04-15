@@ -17,10 +17,26 @@ class MyStyle {
         width: 8.0,
         height: 56.0,
       );
-  
-    SizedBox mySizebox2() => SizedBox(
+
+  SizedBox mySizebox2() => SizedBox(
         height: 36.0,
       );
+
+  Widget titleCenter(BuildContext context, String string) {
+    return Center(
+      child: Container(
+        width: MediaQuery.of(context).size.width * 0.5,
+        child: Text(
+          string,
+          style: TextStyle(
+            fontSize: 23.0,
+            color: Colors.orange[300],
+            fontFamily: 'Sarabun-Bold',
+          ),
+        ),
+      ),
+    );
+  }
 
   Text showTitle(String title) => Text(
         title,
@@ -49,13 +65,13 @@ class MyStyle {
         ),
       );
 
-   Container showIcon() {
+  Container showIcon() {
     return Container(
       width: 60.0,
       // height: 150.0,
       child: Image.asset('images/new_logo1.png'),
     );
-  }    
+  }
 
   Container showLogo() {
     return Container(
@@ -111,28 +127,28 @@ class MyStyle {
         ),
       );
 
-      BoxDecoration myBoxDecoration(String namePic) {
-        return BoxDecoration(
-        color: Colors.orange[600],
-        image: DecorationImage(
-              image: AssetImage("images/$namePic"),
-              fit: BoxFit.cover,
-            ),
-      );
-      }
+  BoxDecoration myBoxDecoration(String namePic) {
+    return BoxDecoration(
+      color: Colors.orange[600],
+      image: DecorationImage(
+        image: AssetImage("images/$namePic"),
+        fit: BoxFit.cover,
+      ),
+    );
+  }
 
   MyStyle();
 }
 
-
 class MyIcon {
-    Container showBurger() {
+  Container showBurger() {
     return Container(
       width: 200.0,
       // height: 150.0,
       child: Image.asset('images/burger.png'),
     );
   }
+
   MyIcon();
 }
 
