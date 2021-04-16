@@ -9,6 +9,10 @@
         android:name="io.flutter.app.FlutterApplication"
         android:label="drider"
         android:icon="@mipmap/ic_launcher">
+
+        <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyDc2QgkJIujFocxkt6GbBcyDMl9p5jFrmY"/>
+
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

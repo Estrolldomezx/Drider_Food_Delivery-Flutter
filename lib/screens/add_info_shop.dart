@@ -1,5 +1,6 @@
 import 'package:drider/utility/my_style.dart';
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class AddInfoShop extends StatefulWidget {
   @override
@@ -10,31 +11,57 @@ class _AddInfoShopState extends State<AddInfoShop> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Center(child: Text('Add Information Shop')),
+      appBar: AppBar(
+        title: Center(child: Text('Add Information Shop')),
+      ),
+      body: SingleChildScrollView(
+        // decoration: BoxDecoration(color: Colors.orange[50]),
+        child: Column(
+          children: <Widget>[
+            MyStyle().mySizeboxORG(),
+            nameForm(),
+            MyStyle().mySizeboxORG(),
+            addressForm(),
+            MyStyle().mySizeboxORG(),
+            phoneForm(),
+            MyStyle().mySizeboxORG(),
+            groupImage(),
+            MyStyle().mySizeboxORG(),
+            showMap(),
+            MyStyle().mySizeboxORG(),
+            saveButton(),
+          ],
         ),
-        body: Container(
-          decoration: BoxDecoration(color: Colors.orange[50]),
-          child: Column(
-            children: <Widget>[
-              MyStyle().mySizeboxORG(),
-              nameForm(),
-              MyStyle().mySizeboxORG(),
-              addressForm(),
-              MyStyle().mySizeboxORG(),
-              phoneForm(),
-              MyStyle().mySizeboxORG(),
-              groupImage(),
-              MyStyle().mySizeboxORG(),
-              showMap(),
-            ],
-          ),
-        ));
+      ),
+    );
+  }
+
+  Widget saveButton() {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      child: RaisedButton.icon(color: MyStyle().primaryColor,
+        onPressed: () {},
+        icon: Icon(Icons.save_rounded),
+        label: Text('Save Information'),
+      ),
+    );
   }
 
   Container showMap() {
+    LatLng latLng = LatLng(6.997883, 100.498875);
+    CameraPosition cameraPosition = CameraPosition(
+      target: latLng,
+      zoom: 16.0,
+    );
     return Container(
-      height: 300.0,
+      height: 200.0,
+      width: 300.0,
+      child: GoogleMap(
+        
+        initialCameraPosition: cameraPosition,
+        mapType: MapType.normal,
+        onMapCreated: (controller) {},
+      ),
     );
   }
 
