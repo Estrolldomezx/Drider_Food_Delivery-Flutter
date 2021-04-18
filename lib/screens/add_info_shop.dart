@@ -1,6 +1,7 @@
 import 'package:drider/utility/my_style.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:location/location.dart';
 
 class AddInfoShop extends StatefulWidget {
   @override
@@ -8,6 +9,32 @@ class AddInfoShop extends StatefulWidget {
 }
 
 class _AddInfoShopState extends State<AddInfoShop> {
+  double lat, lng;
+
+  @override
+  Future<void> initState() async {
+    super.initState();
+    findLatLng();
+  }
+
+  Future<Null> findLatLng() async {
+    LocationData locationData = await findLocationData();
+    setState(() {
+      lat = locationData.latitude;
+      lng = locationData.longitude;
+    });
+    print('lat = $lat, lng = $lng');
+  }
+
+  Future<LocationData> findLocationData() async {
+    Location _location = Location();
+    try {
+      return _location.getLocation();
+    } catch (e) {
+      return null;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +66,8 @@ class _AddInfoShopState extends State<AddInfoShop> {
   Widget saveButton() {
     return Container(
       width: MediaQuery.of(context).size.width,
-      child: RaisedButton.icon(color: MyStyle().primaryColor,
+      child: RaisedButton.icon(
+        color: MyStyle().primaryColor,
         onPressed: () {},
         icon: Icon(Icons.save_rounded),
         label: Text('Save Information'),
@@ -57,7 +85,6 @@ class _AddInfoShopState extends State<AddInfoShop> {
       height: 200.0,
       width: 300.0,
       child: GoogleMap(
-        
         initialCameraPosition: cameraPosition,
         mapType: MapType.normal,
         onMapCreated: (controller) {},
