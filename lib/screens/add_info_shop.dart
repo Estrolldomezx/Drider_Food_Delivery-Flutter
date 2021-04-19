@@ -1,7 +1,7 @@
 import 'package:drider/utility/my_style.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:location/location.dart';
+import 'package:geolocator/geolocator.dart';
 
 class AddInfoShop extends StatefulWidget {
   @override
@@ -9,27 +9,36 @@ class AddInfoShop extends StatefulWidget {
 }
 
 class _AddInfoShopState extends State<AddInfoShop> {
+  // void routeToAddInfo() {
+  //   MaterialPageRoute materialPageRoute = MaterialPageRoute(
+  //     builder: (context) => (),
+  //   );
+  //   Navigator.push(context, materialPageRoute);
+  // }
+
   double lat, lng;
 
   @override
-  Future<void> initState() async {
+  void initState() {
     super.initState();
     findLatLng();
   }
 
   Future<Null> findLatLng() async {
-    LocationData locationData = await findLocationData();
+    Position position = await findPosition();
     setState(() {
-      lat = locationData.latitude;
-      lng = locationData.longitude;
+      lat = position.latitude;
+      lng = position.longitude;
+      print('lat = $lat, lng = $lng');
     });
-    print('lat = $lat, lng = $lng');
   }
 
-  Future<LocationData> findLocationData() async {
-    Location _location = Location();
+  Future<Position> findPosition() async {
+    Position position;
     try {
-      return _location.getLocation();
+      position = await Geolocator.getCurrentPosition();
+
+      return position;
     } catch (e) {
       return null;
     }
@@ -68,6 +77,7 @@ class _AddInfoShopState extends State<AddInfoShop> {
       width: MediaQuery.of(context).size.width,
       child: RaisedButton.icon(
         color: MyStyle().primaryColor,
+        //onPressed: () => routeToAddInfo(), //added
         onPressed: () {},
         icon: Icon(Icons.save_rounded),
         label: Text('Save Information'),

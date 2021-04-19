@@ -32,7 +32,10 @@ dependencies:
   shared_preferences: ^2.0.5
   flutter_countdown_timer: ^4.0.2
   google_maps_flutter: ^2.0.3
-  location: ^4.1.0
+  #location: ^4.1.0
+  geolocator: ^6.2.1
+  latlong: ^0.6.1
+
 
 dev_dependencies:
   flutter_test:
