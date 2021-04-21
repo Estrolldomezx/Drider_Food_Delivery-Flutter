@@ -1,8 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import 'package:drider/utility/my_style.dart';
+import 'package:image_picker/image_picker.dart';
 
 class AddInfoShop extends StatefulWidget {
   @override
@@ -18,6 +21,8 @@ class _AddInfoShopState extends State<AddInfoShop> {
   // }
 
   double lat, lng;
+
+  File file;
 
   @override
   void initState() {
@@ -133,7 +138,7 @@ class _AddInfoShopState extends State<AddInfoShop> {
             MyStyle().mySizeboxORG(),
             Container(
               width: 200.0,
-              child: Image.asset('images/img.png'),
+              child: file == null ? Image.asset('images/img.png') : Image.file(file),
               decoration: BoxDecoration(
                 border: Border.all(
                   width: 2.0,
@@ -145,28 +150,39 @@ class _AddInfoShopState extends State<AddInfoShop> {
         Column(
           children: [
             IconButton(
-                icon: Icon(
-                  Icons.add_photo_alternate_rounded,
-                  color: MyStyle().darkColor,
-                  size: 40.0,
-                ),
-                onPressed: () {}),
+              icon: Icon(
+                Icons.add_photo_alternate_rounded,
+                color: MyStyle().darkColor,
+                size: 40.0,
+              ),
+              onPressed: () => chooseImage(ImageSource.gallery),
+            ),
             IconButton(
                 icon: Icon(
                   Icons.add_a_photo_rounded,
                   color: MyStyle().darkColor,
                   size: 36.0,
                 ),
-                onPressed: () {}),
+                onPressed: () => chooseImage(ImageSource.camera)),
           ],
         ),
       ],
     );
   }
 
-  // Future<Null> chooseImage(ImageSource imageSource) async { //resource image form camera or gallory
-
-  // }
+  Future<Null> chooseImage(ImageSource imageSource) async {
+    //resource image form camera or gallory
+    try {
+      var object = await ImagePicker().getImage(
+        source: imageSource,
+        maxWidth: 800.0,
+        maxHeight: 800.0,
+      );
+      setState(() {
+        file = File(object.path);
+      });
+    } catch (e) {}
+  }
 
   Widget nameForm() => Row(
         mainAxisAlignment: MainAxisAlignment.center,
