@@ -1,7 +1,8 @@
-import 'package:drider/utility/my_style.dart';
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+
+import 'package:drider/utility/my_style.dart';
 
 class AddInfoShop extends StatefulWidget {
   @override
@@ -27,8 +28,10 @@ class _AddInfoShopState extends State<AddInfoShop> {
   Future<Null> findLatLng() async {
     Position position = await findPosition();
     setState(() {
-      lat = position.latitude;
-      lng = position.longitude;
+      lat = 6.9977845;
+      lng = 100.4988803;
+      // lat = position.latitude;
+      // lng = position.longitude;
       print('lat = $lat, lng = $lng');
     });
   }
@@ -63,7 +66,8 @@ class _AddInfoShopState extends State<AddInfoShop> {
             MyStyle().mySizeboxORG(),
             groupImage(),
             MyStyle().mySizeboxORG(),
-            showMap(),
+            lat == null ? MyStyle().showProgess() : showMap(),
+            //showMap(),
             MyStyle().mySizeboxORG(),
             saveButton(),
           ],
@@ -85,8 +89,21 @@ class _AddInfoShopState extends State<AddInfoShop> {
     );
   }
 
+  Set<Marker> myMarker() {
+    return <Marker>[
+      Marker(
+        markerId: MarkerId('myShop'),
+        position: LatLng(lat, lng),
+        infoWindow: InfoWindow(
+          title: 'ร้านของคุณ',
+          snippet: 'ละติจูด = $lat ลองติจูด = $lng',
+        ),
+      ),
+    ].toSet();
+  }
+
   Container showMap() {
-    LatLng latLng = LatLng(6.997883, 100.498875);
+    LatLng latLng = LatLng(lat, lng);
     CameraPosition cameraPosition = CameraPosition(
       target: latLng,
       zoom: 16.0,
@@ -98,6 +115,7 @@ class _AddInfoShopState extends State<AddInfoShop> {
         initialCameraPosition: cameraPosition,
         mapType: MapType.normal,
         onMapCreated: (controller) {},
+        markers: myMarker(),
       ),
     );
   }
@@ -145,6 +163,10 @@ class _AddInfoShopState extends State<AddInfoShop> {
       ],
     );
   }
+
+  // Future<Null> chooseImage(ImageSource imageSource) async { //resource image form camera or gallory
+
+  // }
 
   Widget nameForm() => Row(
         mainAxisAlignment: MainAxisAlignment.center,

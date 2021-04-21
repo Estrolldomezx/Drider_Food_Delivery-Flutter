@@ -6,6 +6,10 @@ class MyStyle {
   Color secondColor = Colors.red[400];
   Color DrawerColor = Colors.red[600];
 
+  Widget showProgess(){
+    return Center(child: CircularProgressIndicator(),);
+  }
+
   var color;
 
   SizedBox mySizeboxORG() => SizedBox(
