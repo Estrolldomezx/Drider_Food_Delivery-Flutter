@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:drider/utility/normal_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -23,6 +24,8 @@ class _AddInfoShopState extends State<AddInfoShop> {
   double lat, lng;
 
   File file;
+
+  String nameShop, addressShop, phoneShop;
 
   @override
   void initState() {
@@ -86,8 +89,23 @@ class _AddInfoShopState extends State<AddInfoShop> {
       width: MediaQuery.of(context).size.width,
       child: RaisedButton.icon(
         color: MyStyle().primaryColor,
-        //onPressed: () => routeToAddInfo(), //added
-        onPressed: () {},
+        onPressed: () {
+          if (nameShop == null || nameShop.isEmpty) {
+            normalDialog(context, 'กรุณาใส่ชื่อให้ถูกต้อง');
+          } 
+          else if (addressShop == null || addressShop.isEmpty) {
+            normalDialog(context, 'กรุณาใส่ที่อยู่ร้านให้ถูกต้อง');
+          }
+          else if (phoneShop == null || phoneShop.isEmpty) {
+            normalDialog(context, 'กรุณาใส่เบอร์ติดต่อให้ถูกต้อง');
+          }
+          else if (file == null){
+            normalDialog(context, 'กรุณาเลือกรูปภาพ'); // ตัวแปร file เริ่มต้นเป็น null หากมีการเลือกภาพ จะไม่เป็น null
+          }
+          else {
+            normalDialog(context, 'กรุณากรอกข้อมูลให้ครบถ้วน');
+          }
+        },
         icon: Icon(Icons.save_rounded),
         label: Text('Save Information'),
       ),
@@ -138,7 +156,9 @@ class _AddInfoShopState extends State<AddInfoShop> {
             MyStyle().mySizeboxORG(),
             Container(
               width: 200.0,
-              child: file == null ? Image.asset('images/img.png') : Image.file(file),
+              child: file == null
+                  ? Image.asset('images/img.png')
+                  : Image.file(file),
               decoration: BoxDecoration(
                 border: Border.all(
                   width: 2.0,
@@ -190,6 +210,8 @@ class _AddInfoShopState extends State<AddInfoShop> {
           Container(
             width: 200.0,
             child: TextField(
+              onChanged: (value) =>
+                  nameShop = value.trim(), //ถ้ามีช่องว่าง ตัดออกอัตโนมัติ
               decoration: InputDecoration(
                 labelText: 'ชื่อร้านค้า',
                 labelStyle: TextStyle(color: MyStyle().primaryColor),
@@ -211,6 +233,7 @@ class _AddInfoShopState extends State<AddInfoShop> {
           Container(
             width: 200.0,
             child: TextField(
+              onChanged: (value) => addressShop = value.trim(),
               decoration: InputDecoration(
                 labelText: 'ที่อยู่ร้านค้า',
                 labelStyle: TextStyle(color: MyStyle().primaryColor),
@@ -232,6 +255,7 @@ class _AddInfoShopState extends State<AddInfoShop> {
           Container(
             width: 200.0,
             child: TextField(
+              onChanged: (value) => phoneShop = value.trim(),
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
                 labelText: 'เบอร์โทรติดต่อ',
